@@ -1,6 +1,9 @@
-﻿using CarDealershipApp.Repository;
+﻿using CarDealershipApp.Domain;
+using CarDealershipApp.Repository;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
 using System.Text;
 
 namespace CarDealershipApp.Commands
@@ -16,7 +19,18 @@ namespace CarDealershipApp.Commands
 
         public override CommandResult Execute()
         {
-            return new CommandResult(true, "Car sold successfully");
+            string message = "Car sold succesfully";
+            Console.Write("Car number: ");
+            string number = Console.ReadLine();
+            bool success = _carRepository.Sell(number);
+            if (!success)
+            {
+                message = $"Car with number {number} does not exist";
+            }
+            
+            
+            return new CommandResult(success, message);
+
         }
     }
 }
