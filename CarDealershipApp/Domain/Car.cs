@@ -11,7 +11,7 @@ namespace CarDealershipApp.Domain
         public int YearMaking;
         public string Color;
         public long Price;
-        
+        public bool IsSold;
         public Car(string number, string model, int year, string color, long price)
         {
             Number = number;

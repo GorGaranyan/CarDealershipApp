@@ -19,18 +19,25 @@ namespace CarDealershipApp.Commands
 
         public override CommandResult Execute()
         {
-            string message = "Car sold succesfully";
             Console.Write("Car number: ");
             string number = Console.ReadLine();
-            bool success = _carRepository.Sell(number);
-            if (!success)
+            Console.WriteLine("Client passport: ");
+            string passport = Console.ReadLine();
+            object car = _carRepository.GetCarByNumber(number);
+            ClientRepository _clientRepository = new ClientRepository();
+            object client = _clientRepository.GetClientByPassport(passport);
+            string message = "";
+            bool success = false;
+            if (car is Car && client is Client)
             {
-                message = $"Car with number {number} does not exist";
+                success = _carRepository.Sell((Car)car, (Client)client);
+                message = "Car sold succesfully";
             }
-            
-            
+            else
+            {
+                    message= "Wrong car number or passport ID";
+            }
             return new CommandResult(success, message);
-
         }
     }
 }

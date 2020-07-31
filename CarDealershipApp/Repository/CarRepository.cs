@@ -2,6 +2,7 @@
 using CarDealershipApp.Domain;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace CarDealershipApp.Repository
@@ -41,17 +42,24 @@ namespace CarDealershipApp.Repository
             return true;
         }
 
-        public bool Sell(string number)
+        public bool Sell(Car car,Client client)
+        {
+            ClientRepository clientRepository = new ClientRepository();
+            client._cars.Add(car);
+            car.IsSold = true;
+            _cars.Remove(car);
+
+            return true;
+        }
+        public object GetCarByNumber(string number)
         {
             foreach(Car car in _cars)
             {
                 if(number==car.Number)
                 {
-                    _cars.Remove(car);
-                    return true;
+                    return car;
                 }
             }
-
             return false;
         }
     }

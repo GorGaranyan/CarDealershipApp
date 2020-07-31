@@ -5,7 +5,7 @@ using System.Text;
 namespace CarDealershipApp.Domain
 {
     public class Client
-    {
+    { 
         public string Name;
         public string Surename;
         public string PassportID;
@@ -16,5 +16,6 @@ namespace CarDealershipApp.Domain
             Surename = surename;
             PassportID = passportid;
         }
+        public List<Car> _cars;
     }
 }

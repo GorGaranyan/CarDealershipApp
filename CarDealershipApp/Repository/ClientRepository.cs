@@ -37,5 +37,16 @@ namespace CarDealershipApp.Repository
             _clients.AddLast(client);
             return true;
         }
+        public object GetClientByPassport(string passport)
+        {
+            foreach(Client item in _clients)
+            {
+                if(passport==item.PassportID)
+                {
+                    return item;
+                }
+            }
+            return false;
+        }
     }
 }
