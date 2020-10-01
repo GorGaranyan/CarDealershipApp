@@ -45,13 +45,15 @@ namespace CarDealershipApp.Repository
         public bool Sell(Car car,Client client)
         {
             ClientRepository clientRepository = new ClientRepository();
-            client._cars.Add(car);
+            client.Cars = new List<Car>();
+            client.Cars.Add(car);
+            
             car.IsSold = true;
             _cars.Remove(car);
 
             return true;
         }
-        public object GetCarByNumber(string number)
+        public Car GetCarByNumber(string number)
         {
             foreach(Car car in _cars)
             {
@@ -60,7 +62,7 @@ namespace CarDealershipApp.Repository
                     return car;
                 }
             }
-            return false;
+            return null;
         }
     }
 }

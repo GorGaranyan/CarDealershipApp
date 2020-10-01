@@ -4,16 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+
 
 namespace CarDealershipApp.Commands
 {
-    public class SellCarCommand : CarCommand
+    public class SellCarCommand : CarCommand 
     {
-        public SellCarCommand(CarRepository carRepository) : base(carRepository) { }
+        public SellCarCommand(CarRepository carRepository, ClientRepository clientRepository) : base(carRepository,clientRepository){ }
 
         public override string CommandText()
         {
+            
             return "sell car";
         }
 
@@ -23,19 +26,18 @@ namespace CarDealershipApp.Commands
             string number = Console.ReadLine();
             Console.WriteLine("Client passport: ");
             string passport = Console.ReadLine();
-            object car = _carRepository.GetCarByNumber(number);
-            ClientRepository _clientRepository = new ClientRepository();
-            object client = _clientRepository.GetClientByPassport(passport);
+            Car car = _carRepository.GetCarByNumber(number);
+            Client client = _clientRepository.GetClientByPassport(passport);
             string message = "";
             bool success = false;
-            if (car is Car && client is Client)
+            if (car != null && client != null)
             {
-                success = _carRepository.Sell((Car)car, (Client)client);
+                success = _carRepository.Sell(car, client);
                 message = "Car sold succesfully";
             }
             else
             {
-                    message= "Wrong car number or passport ID";
+                message= "Wrong car number or passport ID";
             }
             return new CommandResult(success, message);
         }

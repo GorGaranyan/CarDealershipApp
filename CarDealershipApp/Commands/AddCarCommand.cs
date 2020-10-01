@@ -10,7 +10,7 @@ namespace CarDealershipApp.Commands
 {
     public class AddCarCommand : CarCommand
     {
-        public AddCarCommand(CarRepository carRepository) : base(carRepository) { }
+        public AddCarCommand(CarRepository carRepository, ClientRepository clientRepository) : base(carRepository,clientRepository) { }
 
         public override string CommandText()
         {

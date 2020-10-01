@@ -8,9 +8,13 @@ namespace CarDealershipApp.Commands
     public abstract class CarCommand : Command
     {
         protected CarRepository _carRepository;
-        public CarCommand(CarRepository carRepository)
+        protected ClientRepository _clientRepository;
+        public CarCommand(CarRepository carRepository, ClientRepository clientRepository)
         {
             _carRepository = carRepository;
+            _clientRepository = clientRepository;
         }
+       
+        
     }
 }

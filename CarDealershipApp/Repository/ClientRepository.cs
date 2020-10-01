@@ -37,7 +37,7 @@ namespace CarDealershipApp.Repository
             _clients.AddLast(client);
             return true;
         }
-        public object GetClientByPassport(string passport)
+        public Client GetClientByPassport(string passport)
         {
             foreach(Client item in _clients)
             {
@@ -46,7 +46,7 @@ namespace CarDealershipApp.Repository
                     return item;
                 }
             }
-            return false;
+            return null;
         }
     }
 }
