@@ -51,6 +51,7 @@ namespace CarDealershipApp.Repository
             car.IsSold = true;
             _cars.Remove(car);
 
+
             return true;
         }
         public Car GetCarByNumber(string number)
