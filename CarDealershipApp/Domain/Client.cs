@@ -20,7 +20,5 @@ namespace CarDealershipApp.Domain
 
         public List<Car> Cars;
         
-
-       
     }
 }

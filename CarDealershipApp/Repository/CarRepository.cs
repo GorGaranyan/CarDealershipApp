@@ -44,8 +44,10 @@ namespace CarDealershipApp.Repository
 
         public bool Sell(Car car,Client client)
         {
-            ClientRepository clientRepository = new ClientRepository();
-            client.Cars = new List<Car>();
+            if (client.Cars == null)
+            {
+                client.Cars = new List<Car>();
+            }
             client.Cars.Add(car);
             
             car.IsSold = true;

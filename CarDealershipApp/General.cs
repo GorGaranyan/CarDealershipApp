@@ -17,9 +17,9 @@ namespace CarDealershipApp
             _commands = new List<Command>();
             _carRepository = new CarRepository();
             _clientRepository = new ClientRepository();
-            _commands.Add(new AddCarCommand(_carRepository, _clientRepository));
-            _commands.Add(new SellCarCommand(_carRepository,_clientRepository));
-            _commands.Add(new ListCarsCommand(_carRepository,_clientRepository));
+            _commands.Add(new AddCarCommand(_carRepository));
+            _commands.Add(new SellCarCommand(_carRepository, _clientRepository));
+            _commands.Add(new ListCarsCommand(_carRepository));
             _commands.Add(new AddClientCommand(_clientRepository));
             _commands.Add(new ListClientCommand(_clientRepository));
         }

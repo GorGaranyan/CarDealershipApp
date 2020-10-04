@@ -10,9 +10,12 @@ using System.Text;
 
 namespace CarDealershipApp.Commands
 {
-    public class SellCarCommand : CarCommand 
+    public class SellCarCommand : CarCommand
     {
-        public SellCarCommand(CarRepository carRepository, ClientRepository clientRepository) : base(carRepository,clientRepository){ }
+        public SellCarCommand(CarRepository carRepository, ClientRepository clientRepository) : base(carRepository)
+        {
+            _clientRepository = clientRepository;
+        }
 
         public override string CommandText()
         {

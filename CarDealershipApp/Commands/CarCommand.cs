@@ -1,6 +1,7 @@
 ﻿using CarDealershipApp.Repository;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
 namespace CarDealershipApp.Commands
@@ -9,12 +10,15 @@ namespace CarDealershipApp.Commands
     {
         protected CarRepository _carRepository;
         protected ClientRepository _clientRepository;
-        public CarCommand(CarRepository carRepository, ClientRepository clientRepository)
+        public CarCommand(CarRepository carRepository)
         {
             _carRepository = carRepository;
-            _clientRepository = clientRepository;
         }
+
+    }
+        
+
+}
        
         
-    }
-}
+    
